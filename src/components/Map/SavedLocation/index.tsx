@@ -1,12 +1,12 @@
 import { OverlayView, OverlayViewF } from '@react-google-maps/api';
-import { Location } from '../../../context/interfaces';
+import { MapLocation } from '../../../context/interfaces';
 
-interface LocationProps {
-  location: Location;
+interface SavedLocationProps {
+  location: MapLocation;
   key: number;
 }
 
-const SavedLocation = ({ location, key }: LocationProps) => {
+const SavedLocation = ({ location, key }: SavedLocationProps) => {
   return (
     <>
       <OverlayViewF

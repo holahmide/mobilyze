@@ -12,7 +12,9 @@ const AddLocation = () => {
 
   const addLocation = (e: MouseEvent<HTMLElement>) => {
     e.stopPropagation();
+
     if (!temporaryUserSelection) return;
+
     const id = generateLocationId();
     dispatch({ type: 'ADD_LOCATION', payload: { id, ...temporaryUserSelection } });
     dispatch({ type: 'SET_TEMPORARY_USER_SELECTION', payload: null });

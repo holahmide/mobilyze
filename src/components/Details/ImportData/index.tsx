@@ -2,10 +2,9 @@ import { useEffect, useState } from 'react';
 import Papa from 'papaparse';
 import Modal from '../../../utils/components/Modal';
 import { useGlobalContext } from '../../../context';
-import { Location } from '../../../context/interfaces';
+import { MapLocation } from '../../../context/interfaces';
 import { toast } from 'react-toastify';
-
-const allowedExtensions = ['csv'];
+import { ALLOWED_EXTENSIONS } from './constants';
 
 interface ImportDataProps {
   isOpen: boolean;
@@ -13,7 +12,7 @@ interface ImportDataProps {
 }
 
 const ImportDataModal = ({ isOpen, closeModal }: ImportDataProps) => {
-  const [data, setData] = useState<Location[]>([]);
+  const [data, setData] = useState<MapLocation[]>([]);
   const [file, setFile] = useState<Blob | null>();
 
   const { dispatch } = useGlobalContext();
@@ -23,7 +22,7 @@ const ImportDataModal = ({ isOpen, closeModal }: ImportDataProps) => {
       const inputFile = e.target.files[0];
 
       const fileExtension = inputFile?.type.split('/')[1];
-      if (!allowedExtensions.includes(fileExtension)) {
+      if (!ALLOWED_EXTENSIONS.includes(fileExtension)) {
         alert('Please input a csv file');
         return;
       }
@@ -39,7 +38,7 @@ const ImportDataModal = ({ isOpen, closeModal }: ImportDataProps) => {
       const csv = Papa.parse(target.result, {
         header: true
       });
-      setData(csv.data as Location[]);
+      setData(csv.data as MapLocation[]);
     };
     reader.readAsText(file);
   };

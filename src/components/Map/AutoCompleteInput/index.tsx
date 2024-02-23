@@ -1,9 +1,9 @@
 import { Autocomplete } from '@react-google-maps/api';
 import { FC, useRef } from 'react';
 import Input from '../../../utils/components/Input';
-import './styles.css';
 import { useGlobalContext } from '../../../context';
 import { generateLocationId } from '../../../context/functions';
+import './styles.css';
 
 export interface MapAutoCompleteInputProps {
   latitudeName?: string;

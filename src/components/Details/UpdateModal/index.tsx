@@ -1,4 +1,4 @@
-import { Location } from '../../../context/interfaces';
+import { MapLocation } from '../../../context/interfaces';
 import { useGlobalContext } from '../../../context';
 import Modal from '../../../utils/components/Modal';
 import { ChangeEvent, useState } from 'react';
@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 interface UpdateModalProps {
   isOpen: boolean;
   closeModal: () => void;
-  location: Location | undefined;
+  location: MapLocation | undefined;
 }
 
 const UpdateModal = ({ isOpen, closeModal, location }: UpdateModalProps) => {

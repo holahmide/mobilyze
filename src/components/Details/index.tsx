@@ -6,12 +6,12 @@ import {
   VisibilityOutlinedIcon
 } from '../../assets/icons';
 import { useGlobalContext } from '../../context';
-import './styles.css';
-import { Location } from '../../context/interfaces';
+import { MapLocation } from '../../context/interfaces';
 import { CSVLink } from 'react-csv';
 import DeleteModal from './DeleteModal';
 import UpdateModal from './UpdateModal';
 import ImportDataModal from './ImportData';
+import './styles.css';
 
 const Details = () => {
   const {
@@ -27,18 +27,18 @@ const Details = () => {
     });
   };
 
-  const [activeLocation, setActivelocation] = useState<Location>();
+  const [activeLocation, setActiveLocation] = useState<MapLocation>();
 
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
   const [isImportModalOpen, setIsImportModalOpen] = useState(false);
 
-  const openDeleteModal = (location: Location) => {
-    setActivelocation(location);
+  const openDeleteModal = (location: MapLocation) => {
+    setActiveLocation(location);
     setIsDeleteModalOpen(true);
   };
-  const openUpdateModal = (location: Location) => {
-    setActivelocation(location);
+  const openUpdateModal = (location: MapLocation) => {
+    setActiveLocation(location);
     setIsUpdateModalOpen(true);
   };
   const openImportModal = () => {
@@ -48,13 +48,13 @@ const Details = () => {
   return (
     <>
       <DeleteModal
-        location={activeLocation as Location}
+        location={activeLocation as MapLocation}
         isOpen={isDeleteModalOpen}
         closeModal={() => setIsDeleteModalOpen(false)}
       />
 
       <UpdateModal
-        location={activeLocation as Location}
+        location={activeLocation as MapLocation}
         isOpen={isUpdateModalOpen}
         closeModal={() => setIsUpdateModalOpen(false)}
       />

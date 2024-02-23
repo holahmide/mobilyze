@@ -1,11 +1,12 @@
-import { Location } from '../../../context/interfaces';
+import { MapLocation } from '../../../context/interfaces';
 import { useGlobalContext } from '../../../context';
 import Modal from '../../../utils/components/Modal';
+import { toast } from 'react-toastify';
 
 interface DeleteModalProps {
   isOpen: boolean;
   closeModal: () => void;
-  location: Location | undefined;
+  location: MapLocation | undefined;
 }
 
 const DeleteModal = ({ isOpen, closeModal, location }: DeleteModalProps) => {
@@ -14,6 +15,7 @@ const DeleteModal = ({ isOpen, closeModal, location }: DeleteModalProps) => {
   const deleteLocation = (id: string) => {
     dispatch({ type: 'DELETE_LOCATION', payload: id });
     closeModal();
+    toast('location deleted successfully', { type: 'success' });
   };
 
   if (!location) return null;

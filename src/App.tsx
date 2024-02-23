@@ -1,8 +1,8 @@
-import './App.css';
 import { ListOutlinedIcon, MapIcon } from './assets/icons';
 import Details from './components/Details';
 import Map from './components/Map';
 import { useGlobalContext } from './context';
+import './App.css';
 
 function App() {
   const {

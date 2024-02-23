@@ -5,16 +5,16 @@ export interface LatLng {
   lng: number;
 }
 
-export interface Location extends LatLng {
+export interface MapLocation extends LatLng {
   id: string;
   label?: string;
   address?: string;
 }
 
 export interface GlobalContextState {
-  locations: Location[];
+  locations: MapLocation[];
   mapCenter: LatLng;
-  markerInputLocation?: Location | null;
+  markerInputLocation?: MapLocation | null;
   lastIdIndex: number;
   showMobileListContainer: boolean;
   temporaryUserSelection?: LatLng | null;
@@ -28,11 +28,11 @@ export interface GlobalContextProps {
 export type GlobalActions =
   | {
       type: 'ADD_LOCATION';
-      payload: Location;
+      payload: MapLocation;
     }
   | {
       type: 'IMPORT_DATA';
-      payload: Location[];
+      payload: MapLocation[];
     }
   | {
       type: 'REVISIT_LOCATION';
@@ -44,7 +44,7 @@ export type GlobalActions =
     }
   | {
       type: 'UPDATE_LOCATION';
-      payload: Location;
+      payload: MapLocation;
     }
   | {
       type: 'SET_MARKER_FOCUS';

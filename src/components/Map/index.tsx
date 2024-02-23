@@ -1,11 +1,11 @@
 import { GoogleMap, MarkerF, useJsApiLoader } from '@react-google-maps/api';
 import { useCallback, useEffect, useState } from 'react';
 import { DEFAULT_ZOOM, MAP_CONTAINER_STYLES } from './contants';
-import './styles.css';
 import { useGlobalContext } from '../../context';
-import MapAutoCompleteInput from './AutoCompleteIput';
+import MapAutoCompleteInput from './AutoCompleteInput';
 import SavedLocation from './SavedLocation';
 import AddLocation from './AddLocation';
+import './styles.css';
 
 const Map = () => {
   const { isLoaded } = useJsApiLoader({
@@ -39,6 +39,7 @@ const Map = () => {
     dispatch({ type: 'SET_TEMPORARY_USER_SELECTION', payload: newLocation });
   };
 
+  // Pan to the new location when the user visits or revisits a location
   useEffect(() => {
     map?.panTo(mapCenter);
   }, [map, mapCenter]);
@@ -68,7 +69,6 @@ const Map = () => {
               <MarkerF
                 key={index}
                 position={location}
-                icon=""
                 onClick={() => setMarkerFocus(location.id)}
               />
             ))}
