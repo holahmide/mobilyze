@@ -1,0 +1,13 @@
+
+.autocomplete-container {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    margin-top: 50px;
+    width: 100%;
+}
+
+.autocomplete-input-container {
+    padding: 0 12px;
+    overflow: 'hidden'
+}
