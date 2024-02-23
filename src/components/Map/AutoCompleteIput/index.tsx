@@ -35,7 +35,11 @@ const MapAutoCompleteInput: FC<MapAutoCompleteInputProps> = () => {
       <Autocomplete onLoad={(ref) => (autoComplete.current = ref)} onPlaceChanged={onPlaceChanged}>
         <div className="autocomplete-container">
           <div className="autocomplete-input-container">
-            <Input name="address" placeholder="Enter location address..." />
+            <Input
+              className="autocomplete-input"
+              name="address"
+              placeholder="Enter location address..."
+            />
           </div>
         </div>
       </Autocomplete>

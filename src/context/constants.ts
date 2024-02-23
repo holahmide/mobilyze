@@ -5,7 +5,7 @@ export const DEFAULT_STATE = {
     lng: 3.3514345724380825
   },
   markerInputLocation: null,
-  lastIdIndex: 0,
+  lastIdIndex: 1,
   showMobileListContainer: false
 };
 

@@ -70,3 +70,31 @@
     transition: border-color 0.25s;
     color:white;
 }
+
+.no-locations {
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
+    height:100%;
+    color: white;
+    font-size: 24px;
+    margin-top: 44px;
+}
+
+.no-locations > p {
+    font-size: 18px;
+    margin:0;
+}
+
+.no-locations > i {
+    font-size: 12px;
+    margin:0;
+}
+
+.no-locations > .icon {
+    width: 20px;
+    height: 20px;
+    color: white;
+    margin-right: 10px;
+}

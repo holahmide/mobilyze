@@ -1,5 +1,10 @@
 import { useState } from 'react';
-import { DeteteOutlinedIcon, PenIcon, VisibilityOutlinedIcon } from '../../assets/icons';
+import {
+  DeteteOutlinedIcon,
+  HourglassEmptyOutlinedIcon,
+  PenIcon,
+  VisibilityOutlinedIcon
+} from '../../assets/icons';
 import { useGlobalContext } from '../../context';
 import './styles.css';
 import { Location } from '../../context/interfaces';
@@ -92,6 +97,17 @@ const Details = () => {
               </div>
             </div>
           ))}
+
+          {locations.length === 0 && (
+            <div className="no-locations">
+              <HourglassEmptyOutlinedIcon className="no-locations__icon" />
+              <p>No locations saved</p>
+              <i>
+                Select any location on the map to add to your list. You can also use the search
+                input on the map💛.
+              </i>
+            </div>
+          )}
         </div>
       </div>
     </>

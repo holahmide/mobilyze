@@ -59,6 +59,12 @@ export const globalReducer = (
         showMobileListContainer: !state.showMobileListContainer
       };
       break;
+    case 'SET_TEMPORARY_USER_SELECTION':
+      newState = {
+        ...state,
+        temporaryUserSelection: action.payload
+      };
+      break;
     default:
       throw new Error(`No such type ${action.type}`);
   }

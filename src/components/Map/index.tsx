@@ -4,8 +4,8 @@ import { DEFAULT_ZOOM, MAP_CONTAINER_STYLES } from './contants';
 import './styles.css';
 import { useGlobalContext } from '../../context';
 import MapAutoCompleteInput from './AutoCompleteIput';
-import { generateLocationId } from '../../context/functions';
 import SavedLocation from './SavedLocation';
+import AddLocation from './AddLocation';
 
 const Map = () => {
   const { isLoaded } = useJsApiLoader({
@@ -15,7 +15,7 @@ const Map = () => {
   });
 
   const {
-    state: { locations, mapCenter },
+    state: { locations, mapCenter, temporaryUserSelection },
     dispatch
   } = useGlobalContext();
 
@@ -35,9 +35,8 @@ const Map = () => {
 
   const handleMapClick = (e: any) => {
     const newLocation = e.latLng.toJSON();
-    const id = generateLocationId();
-    dispatch({ type: 'ADD_LOCATION', payload: { ...newLocation, id } });
-    setMarkerFocus(id);
+
+    dispatch({ type: 'SET_TEMPORARY_USER_SELECTION', payload: newLocation });
   };
 
   useEffect(() => {
@@ -46,7 +45,7 @@ const Map = () => {
 
   // Cluster markers when the locations list is changed
   useEffect(() => {
-    if (map) {
+    if (map && locations.length > 0) {
       const bounds = new google.maps.LatLngBounds();
       locations.map((location) => bounds.extend(location));
       map.fitBounds(bounds);
@@ -73,6 +72,8 @@ const Map = () => {
                 onClick={() => setMarkerFocus(location.id)}
               />
             ))}
+
+            {temporaryUserSelection && <AddLocation />}
 
             {locations.map((location, index) => (
               <SavedLocation location={location} key={index} />

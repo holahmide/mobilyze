@@ -17,6 +17,7 @@ export interface GlobalContextState {
   markerInputLocation?: Location | null;
   lastIdIndex: number;
   showMobileListContainer: boolean;
+  temporaryUserSelection?: LatLng | null;
 }
 
 export interface GlobalContextProps {
@@ -51,4 +52,8 @@ export type GlobalActions =
     }
   | {
       type: 'TOGGLE_MOBILE_LIST';
+    }
+  | {
+      type: 'SET_TEMPORARY_USER_SELECTION';
+      payload: LatLng | null;
     };
