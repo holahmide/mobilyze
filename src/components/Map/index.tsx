@@ -45,7 +45,7 @@ const Map = () => {
 
   // Cluster markers when the locations list is changed
   useEffect(() => {
-    if (map && locations.length > 0) {
+    if (map && locations.length > 1) {
       const bounds = new google.maps.LatLngBounds();
       locations.map((location) => bounds.extend(location));
       map.fitBounds(bounds);

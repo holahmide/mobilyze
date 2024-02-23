@@ -2,6 +2,7 @@ import { MarkerF, OverlayView, OverlayViewF } from '@react-google-maps/api';
 import { useGlobalContext } from '../../../context';
 import { MouseEvent } from 'react';
 import { generateLocationId } from '../../../context/functions';
+import { toast } from 'react-toastify';
 
 const AddLocation = () => {
   const {
@@ -15,6 +16,7 @@ const AddLocation = () => {
     const id = generateLocationId();
     dispatch({ type: 'ADD_LOCATION', payload: { id, ...temporaryUserSelection } });
     dispatch({ type: 'SET_TEMPORARY_USER_SELECTION', payload: null });
+    toast('New location added successfully', { type: 'success' });
   };
 
   const removeTemporarySelection = (e: MouseEvent<HTMLElement>) => {

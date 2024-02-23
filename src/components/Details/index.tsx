@@ -11,6 +11,7 @@ import { Location } from '../../context/interfaces';
 import { CSVLink } from 'react-csv';
 import DeleteModal from './DeleteModal';
 import UpdateModal from './UpdateModal';
+import ImportDataModal from './ImportData';
 
 const Details = () => {
   const {
@@ -29,17 +30,19 @@ const Details = () => {
   const [activeLocation, setActivelocation] = useState<Location>();
 
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
-
   const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false);
+  const [isImportModalOpen, setIsImportModalOpen] = useState(false);
 
   const openDeleteModal = (location: Location) => {
     setActivelocation(location);
     setIsDeleteModalOpen(true);
   };
-
   const openUpdateModal = (location: Location) => {
     setActivelocation(location);
     setIsUpdateModalOpen(true);
+  };
+  const openImportModal = () => {
+    setIsImportModalOpen(true);
   };
 
   return (
@@ -56,13 +59,19 @@ const Details = () => {
         closeModal={() => setIsUpdateModalOpen(false)}
       />
 
+      <ImportDataModal isOpen={isImportModalOpen} closeModal={() => setIsImportModalOpen(false)} />
+
       <div className="details">
         <div className="header-container">
           <h3>Mobilyze Locations ({locations.length})</h3>
 
-          <CSVLink id="header-export-btn" data={locations} filename="mobilyze-locations">
-            Export
-          </CSVLink>
+          <div className="header-btns">
+            <button onClick={openImportModal}>Import</button>
+
+            <CSVLink id="header-export-btn" data={locations} filename="mobilyze-locations">
+              Export
+            </CSVLink>
+          </div>
         </div>
 
         <div className="locations-container">

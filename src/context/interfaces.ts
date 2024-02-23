@@ -31,6 +31,10 @@ export type GlobalActions =
       payload: Location;
     }
   | {
+      type: 'IMPORT_DATA';
+      payload: Location[];
+    }
+  | {
       type: 'REVISIT_LOCATION';
       payload: string;
     }

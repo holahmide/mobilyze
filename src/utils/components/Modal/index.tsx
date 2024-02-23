@@ -9,15 +9,17 @@ export interface ModalProps {
   label?: string;
   title?: string;
   children: ReactNode;
+  styles?: ReactModal.Styles['content'];
 }
 
-const Modal: FC<ModalProps> = ({ closeModal, children, isOpen, label, title }) => {
+const Modal: FC<ModalProps> = ({ closeModal, children, isOpen, label, title, styles = {} }) => {
   return (
     <ReactModal
       isOpen={isOpen}
       onRequestClose={closeModal}
-      style={customStyles}
+      style={{ ...customStyles, content: { ...customStyles.content, ...styles } }}
       contentLabel={label}
+      ariaHideApp={false}
     >
       <h3 ref={(_subtitle) => _subtitle} className="modal-header">
         {title}

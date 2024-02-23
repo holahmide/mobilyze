@@ -15,7 +15,7 @@ function App() {
   };
 
   return (
-    <div className="container">
+    <div id="app" className="container">
       <div className="map-container">
         <Map />
       </div>

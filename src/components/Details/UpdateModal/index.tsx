@@ -3,6 +3,7 @@ import { useGlobalContext } from '../../../context';
 import Modal from '../../../utils/components/Modal';
 import { ChangeEvent, useState } from 'react';
 import Input from '../../../utils/components/Input';
+import { toast } from 'react-toastify';
 
 interface UpdateModalProps {
   isOpen: boolean;
@@ -29,32 +30,36 @@ const UpdateModal = ({ isOpen, closeModal, location }: UpdateModalProps) => {
       }
     });
     closeModal();
+    toast('location updated successfully', { type: 'success' });
   };
 
   if (!location) return null;
 
   return (
     <Modal isOpen={isOpen} closeModal={closeModal} title="Update Location">
-      <div className="modal-body">
-        <b>Coordinates</b>: {location.lat}, {location.lng} <br />
-        <Input
-          name="label"
-          defaultValue={location.label}
-          onChange={handleInputChange}
-          placeholder="Enter a label..."
-        />
-      </div>
+      <form onSubmit={updateLocation}>
+        <div className="modal-body">
+          <b>Coordinates</b>: {location.lat}, {location.lng} <br />
+          <Input
+            name="label"
+            defaultValue={location.label}
+            onChange={handleInputChange}
+            placeholder="Enter a label..."
+          />
+        </div>
 
-      <div className="modal-footer">
-        <button
-          disabled={!label}
-          style={{ backgroundColor: '#ef4444' }}
-          onClick={() => updateLocation()}
-        >
-          Update
-        </button>
-        <button onClick={closeModal}>Close</button>
-      </div>
+        <div className="modal-footer">
+          <button
+            type="submit"
+            disabled={!label}
+            style={{ backgroundColor: '#ef4444' }}
+            onClick={updateLocation}
+          >
+            Update
+          </button>
+          <button onClick={closeModal}>Close</button>
+        </div>
+      </form>
     </Modal>
   );
 };

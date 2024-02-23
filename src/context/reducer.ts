@@ -8,6 +8,30 @@ export const globalReducer = (
   let newState: GlobalContextState = { ...state };
 
   switch (action.type) {
+    case 'IMPORT_DATA':
+      newState = {
+        ...state,
+        locations: [
+          ...action.payload
+            .filter(
+              (location) =>
+                // Validates presence of lat & lng, and the presence of the data in the locations array
+                Number(location.lat) &&
+                Number(location.lng) &&
+                !state.locations.find(
+                  (loc) => loc.lat === Number(location.lat) && loc.lng === Number(location.lng)
+                )
+            )
+            .map((location) => ({
+              ...location,
+              lat: Number(location.lat),
+              lng: Number(location.lng)
+            })),
+          ...state.locations
+        ],
+        lastIdIndex: state.lastIdIndex + 1
+      };
+      break;
     case 'ADD_LOCATION':
       newState = {
         ...state,
@@ -62,7 +86,7 @@ export const globalReducer = (
     case 'SET_TEMPORARY_USER_SELECTION':
       newState = {
         ...state,
-        temporaryUserSelection: action.payload
+        temporaryUserSelection: action.payload || null
       };
       break;
     default:
