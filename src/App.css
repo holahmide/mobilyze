@@ -22,16 +22,16 @@
 }
 
 .details-container {
-  margin-left: 70vw;
+  margin-left: 69.5vw;
   min-height:100vh;
-  width:30vw;
+  width:30.5vw;
   overflow-x: hidden;
   display:flex;
   max-height: 100vh;
   height: 100vh;
   overflow-y: auto;
-  border-top-left-radius: 15px 15px;
-  border-bottom-left-radius: 15px 15px;
+  border-top-left-radius: 10px 10px;
+  border-bottom-left-radius: 10px 10px;
   background-color: var(--background);
   z-index: 10;
 }
