@@ -2,7 +2,6 @@ import { Autocomplete } from '@react-google-maps/api';
 import { FC, useRef } from 'react';
 import Input from '../../../utils/components/Input';
 import { useGlobalContext } from '../../../context';
-import { generateLocationId } from '../../../context/functions';
 import './styles.css';
 
 export interface MapAutoCompleteInputProps {
@@ -21,12 +20,8 @@ const MapAutoCompleteInput: FC<MapAutoCompleteInputProps> = () => {
 
       const newLat = place?.geometry?.location?.lat() || 0;
       const newLng = place?.geometry?.location?.lng() || 0;
-      const id = generateLocationId();
 
-      dispatch({
-        type: 'ADD_LOCATION',
-        payload: { id, lat: newLat, lng: newLng }
-      });
+      dispatch({ type: 'SET_TEMPORARY_USER_SELECTION', payload: { lat: newLat, lng: newLng } });
     }
   };
 
