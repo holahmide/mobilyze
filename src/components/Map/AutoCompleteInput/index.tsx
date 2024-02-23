@@ -22,6 +22,7 @@ const MapAutoCompleteInput: FC<MapAutoCompleteInputProps> = () => {
       const newLng = place?.geometry?.location?.lng() || 0;
 
       dispatch({ type: 'SET_TEMPORARY_USER_SELECTION', payload: { lat: newLat, lng: newLng } });
+      dispatch({ type: 'SET_MAP_CENTER', payload: { lat: newLat, lng: newLng } });
     }
   };
 

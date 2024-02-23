@@ -51,6 +51,10 @@ export type GlobalActions =
       payload: string;
     }
   | {
+      type: 'SET_MAP_CENTER';
+      payload: LatLng;
+    }
+  | {
       type: 'SET_LAST_ID_INDEX';
       payload: number;
     }

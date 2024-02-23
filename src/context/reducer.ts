@@ -71,6 +71,12 @@ export const globalReducer = (
         markerInputLocation: state.locations.find((location) => location.id === action.payload)
       };
       break;
+    case 'SET_MAP_CENTER':
+      newState = {
+        ...state,
+        mapCenter: action.payload
+      };
+      break;
     case 'DELETE_LOCATION':
       newState = {
         ...state,
