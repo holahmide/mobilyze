@@ -48,6 +48,7 @@ export const globalReducer = (
     case 'REVISIT_LOCATION':
       newState = {
         ...state,
+        showMobileListContainer: false,
         mapCenter:
           state.locations.find((location) => location.id === action.payload) || state.mapCenter
       };
