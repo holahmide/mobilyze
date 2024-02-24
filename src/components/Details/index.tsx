@@ -63,7 +63,7 @@ const Details = () => {
 
       <div className="details">
         <div className="header-container">
-          <h3>Mobilyze Locations ({locations.length})</h3>
+          <h3>Locations ({locations.length})</h3>
 
           <div className="header-btns">
             <button onClick={openImportModal}>Import</button>
