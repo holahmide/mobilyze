@@ -52,7 +52,7 @@ const UpdateModal = ({ isOpen, closeModal, location }: UpdateModalProps) => {
           <button
             type="submit"
             disabled={!label}
-            style={{ backgroundColor: '#ef4444' }}
+            style={{ backgroundColor: 'var(--primary)' }}
             onClick={updateLocation}
           >
             Update
